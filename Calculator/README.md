@@ -1,10 +1,10 @@
 
-* About
+# About
 
 A very basic CLI calculator with a likewise very basic REPL.
 It uses the standard library parser combinators for parsing.
 
-* Using/developing
+# Using/developing
 
 Requires sbt 0.13.13.
 
