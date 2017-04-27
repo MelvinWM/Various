@@ -5,5 +5,5 @@ Various minor toy projects. A current list:
 - Circle-fractal: A basic drawing application which draws a fractal
   based on circles.
 
-Some of the projects are available online at https://melvinwm.github.io/Various/.
+Some of the projects are available online at [https://melvinwm.github.io/Various/](https://melvinwm.github.io/Various/).
 
