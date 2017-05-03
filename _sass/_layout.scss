@@ -1,0 +1,64 @@
+
+/**
+ * Site header
+ */
+.site-header {
+    border-bottom: 1px solid black;
+    min-height: 56px;
+    background-color: $grey-color-light;
+    border-right: 1px solid black;
+}
+
+.site-title {
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 0;
+    padding: $spacing-unit $spacing-unit 0 $spacing-unit;
+    float: left;
+
+    &,
+    &:visited {
+        color: black;
+    }
+}
+
+
+
+/** Generic styling.
+ *
+ */
+
+.warning_text {
+  color: black;
+  font-style: italic;
+}
+
+.error_text {
+  color: red;
+  font-weight: bold;
+}
+
+.main_content_area {
+  padding: 0 $spacing-unit;
+}
+
+.basic_form {
+  padding: 0 0 $spacing-unit 0;
+}
+
+
+
+/** Circle-fractal styling.
+ *
+ */
+
+.circlefractal_drawing_board {
+  border-width: 3px;
+  border-color: black;
+  border-style: solid;
+}
+
+.main_draw_button {
+  font-size: 20px;
+}
+

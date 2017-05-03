@@ -5,4 +5,5 @@ Various minor toy projects. A current list:
 - Circle-fractal: A basic drawing application which draws a fractal
   based on circles. One or more variants are available online:
     - [Pure JavaScript variant](https://melvinwm.github.io/Various/CircleFractal/JavaScript/circlefractal.html).
+    - [TypeScript variant](https://melvinwm.github.io/Various/CircleFractal/TypeScript/circlefractal.html).
 

@@ -41,9 +41,22 @@ const myMainFun = function() {
     });
   };
 
+  /** Handle potentially expected errors (like missing support) that users
+    * might be able to recover from, for instance by switching browsers.
+    *
+    * For programming/unexpected errors, throw it directly instead of using
+    * this function.
+    *
+    * In a production application, errors should probably be logged/tracked
+    * and sent somewhere, and fallbacks should be provided in case of
+    * missing support (or at least user-friendly and accurate error
+    * handling when support is missing).
+    */
   const handleError = function(errorMessage) {
-    myErrorText.innerHTML = "Internal error occurred. See logs for more information.";
-    window.console.error("Error occurred: " + errorMessage);
+    const str = "Error occurred: " + errorMessage + ".";
+    myErrorText.innerHTML = str;
+    window.console.error(str);
+    throw new Error(errorMessage);
   };
 
   // Setup drawing.
@@ -59,7 +72,6 @@ const myMainFun = function() {
 
   if (!window.Worker) {
     handleError("Web workers are not supported.");
-    // Continue onwards optimistically (OK in a toy project).
   }
 
   // Used to track which messages from a worker belong to the current worker.
@@ -122,7 +134,7 @@ const myMainFun = function() {
             );
           }
           else {
-            handleError("Unregnized message type from web worker: " + type);
+            throw new Error("Unregnized message type from web worker: " + type);
           }
         }
       },

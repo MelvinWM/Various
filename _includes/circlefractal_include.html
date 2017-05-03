@@ -1,0 +1,36 @@
+
+<div class="main_content_area">
+  <h1>Basic circle-fractal drawing - {{ include.implementationVariant }} variant</h1>
+  <p class="warning_text">
+    Note: This page requires that several features (such as JavaScript web workers)
+    are supported by the used browser.
+  </p>
+  <canvas id="drawing_board" width="500" height="350" class="circlefractal_drawing_board">
+    Warning: The "canvas" element is not supported by this browser.
+  </canvas>
+  <p><span class="error_text" id="error_text"></span></p>
+  <form class="basic_form">
+    <label>Number of iterations for the circle-fractal (0 to 100):</label>
+    <input type="number" id="input_iterations" min="0" max="100" step="1" />
+    <label id="show_iterations"></label>
+  </form>
+  <form class="basic_form">
+    <label>Division factor for the radius of the new circles for each iteration (2 to 5):</label>
+    <input type="range" id="input_division" min="2" max="5" step="1" />
+    <label id="show_division"></label>
+  </form>
+  <form class="basic_form">
+    <label>Smoothing length for circle edges ([0.0; 4.0]; 0.01 increment):</label>
+    <input type="number" id="input_cutoff" min="0.0" max="4.0" step="0.01" />
+    <label id="show_cutoff"></label>
+  </form>
+  <button id="reload_button" class="main_draw_button">Draw</button>
+  <h4>Features:</h4>
+  <ul>
+    <li>Drawing circle-fractal.</li>
+    <li>Various settings and minor validation.</li>
+    <li>Progress status in case drawing takes a long time (try iterations = 100).</li>
+    <li>Cancelling drawing in progress and draw something different.</li>
+  </ul>
+</div>
+

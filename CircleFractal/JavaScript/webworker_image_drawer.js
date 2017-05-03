@@ -208,7 +208,8 @@ class PointToColorCalculator {
   *       (https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmap).
   *
   * The web worker in its current version can be reused, though it does not
-  * respond until it has finished its current task.
+  * respond until it has finished its current task. It also does not keep its
+  * ID upon new uses.
   */
 const drawToImage = function(event) {
 
