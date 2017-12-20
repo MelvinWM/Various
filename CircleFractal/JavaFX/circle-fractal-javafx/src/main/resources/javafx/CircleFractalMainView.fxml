@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import java.lang.Integer?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.canvas.Canvas?>
+
+<?import org.melvinwm.circlefractal.javafx.CircleFractalHardcodedSettings?>
+
+<!-- -->
+<!-- -->
+<!-- Contains the drawing canvas and the drawing controls. -->
+<!-- -->
+<!-- -->
+
+<VBox
+    xmlns:fx="http://javafx.com/fxml"
+    fx:controller="org.melvinwm.circlefractal.javafx.CircleFractalMainController">
+  
+  <stylesheets>
+    <URL value="@CircleFractalStyling.css" />
+  </stylesheets>
+
+  <!-- -->
+  <!-- Menu. -->
+  <!-- -->
+  
+  <MenuBar useSystemMenuBar="true">
+    <menus>
+      <Menu text="Help">
+        <items>
+          <!-- NOTE: Could also place the 'showAboutDialogAndWait' call-back
+               in the controller class instead. -->
+          <MenuItem text="About" onAction="#showAboutDialogAndWait"/>
+        </items>
+      </Menu>
+    </menus>
+  </MenuBar>
+
+  <!-- -->
+  <!-- Main content. -->
+  <!-- -->
+  
+  <VBox>
+  
+    <!-- -->
+    <!-- Headline. -->
+    <!-- -->
+    
+    <VBox>
+      <padding><Insets topRightBottomLeft="10" /></padding>
+      <Label
+          text="Basic circle-fractal drawing - JavaFX using Java variant"
+          styleClass="circlefractal-h1" />
+    </VBox>
+    
+    <Separator />
+    
+    <!-- -->
+    <!-- Drawing area. -->
+    <!-- -->
+    
+    <VBox alignment="TOP_CENTER">
+      <padding><Insets topRightBottomLeft="10" /></padding>
+      
+      <Canvas fx:id="fractalDrawingCanvas">
+        <width><CircleFractalHardcodedSettings fx:constant="drawingAreaImageWidth" /></width>
+        <height><CircleFractalHardcodedSettings fx:constant="drawingAreaImageHeight" /></height>
+      </Canvas>
+      
+      <ProgressBar fx:id="fractalDrawingProgressBar">
+        <maxWidth><CircleFractalHardcodedSettings fx:constant="drawingAreaImageWidth" /></maxWidth>
+      </ProgressBar>
+    </VBox>
+    
+    <Separator />
+    
+    <!-- -->
+    <!-- Drawing controls. -->
+    <!-- -->
+    
+    <VBox spacing="10.0">
+      <padding><Insets topRightBottomLeft="10" /></padding>
+      
+      <!-- Number of iterations. -->
+      
+      <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <Label text="Number of iterations for the circle-fractal (0 to 1000):" />
+        <Spinner fx:id="numberOfIterationsSpinner" editable="true" >
+          <valueFactory>
+            <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="1000" initialValue="5" />
+          </valueFactory>
+        </Spinner>
+      </HBox>
+      
+      <!-- Division factor. -->
+      
+      <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <Label text="Division factor for the radius of the new circles for each iteration (2 to 5):" />
+        <!-- NOTE: Regarding increment, there is rounding to increment in the control code. -->
+        <Slider fx:id="divisionFactorSlider" min="2" max="5" value="2" blockIncrement="1" majorTickUnit="1.0" snapToTicks="true" />
+        <Label fx:id="divisionFactorValueLabel" />
+      </HBox>
+      
+      <!-- Cut-off label. -->
+      
+      <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <Label text="Smoothing length for circle edges ([0.0; 4.0]; 0.01 increment):" />
+        <Spinner fx:id="cutOffSpinner" editable="true">
+          <valueFactory>
+            <SpinnerValueFactory.DoubleSpinnerValueFactory min="0.0" max="4.0" initialValue="1.5" amountToStepBy="0.01" />
+          </valueFactory>
+        </Spinner>
+      </HBox>
+      
+      <!-- Do parallelized computation check-box. -->
+    
+      <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <Label text="Do parallelized computation." />
+        <CheckBox fx:id="isParallelizedComputationCheckBox" allowIndeterminate="false" />
+      </HBox>
+
+      <!-- Draw request button. -->
+      
+      <Button fx:id="drawRequestButton" text="Draw" />
+      
+    </VBox>
+    
+    <Separator />
+    
+    <!-- -->
+    <!-- Feature list. -->
+    <!-- -->
+    
+    <VBox spacing="10">
+      <padding><Insets topRightBottomLeft="10" /></padding>
+      
+      <Label text="Features:" styleClass="circlefractal-h2" />
+      
+      <VBox spacing="10">
+        <padding><Insets top="0" right="10" bottom="10" left="30" /></padding>
+        
+        <Label text="Drawing circle-fractal." />
+        <Label text="Various settings and minor validation." />
+        <Label text="Progress status in case drawing takes a long time (try iterations = 100)." />
+        <Label text="Cancelling drawing in progress and draw something different." />
+        
+      </VBox>
+    </VBox>
+  </VBox>
+</VBox>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import java.lang.Integer?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.canvas.Canvas?>
+
+<?import org.melvinwm.circlefractal.javafx.CircleFractalHardcodedSettings?>
+
+<!-- -->
+<!-- About dialog pane, including a link to the source code. -->
+<!-- -->
+
+<DialogPane
+  xmlns:fx="http://javafx.com/fxml"
+  fx:controller="org.melvinwm.circlefractal.javafx.CircleFractalAboutDialogController"
+  headerText="About">
+
+  <stylesheets>
+    <URL value="@CircleFractalStyling.css" />
+  </stylesheets>
+  
+  <buttonTypes>
+    <ButtonType fx:constant="CLOSE" />
+  </buttonTypes>
+  
+  <content>
+    <FlowPane>
+    
+      <Label text="Link to source code: " />
+  
+      <Hyperlink fx:id="linkToSource" text="https://github.com/MelvinWM/Various" />      
+  
+    </FlowPane>
+  </content>
+  
+</DialogPane>
