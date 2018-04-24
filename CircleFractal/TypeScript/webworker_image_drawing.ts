@@ -60,7 +60,7 @@ namespace WebworkerImageDrawing {
 
         // Let the number of progress report messages depend on the number of pixels
         // and iterations. Not a great way to do it, but should be OK.
-        const progressMessagePixelIndex = Math.round(1000000.0/numberOfIterations);
+        const progressMessagePixelIndex = Math.round(1000000.0/(numberOfIterations + 1));
 
         // Draw (and send progress messages).
 

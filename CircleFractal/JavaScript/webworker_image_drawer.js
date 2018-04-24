@@ -46,7 +46,7 @@ class PointToColorCalculator {
     * @param maximumDistance Floating-point, is used for color calculation (since color is calculated
     *   depending on the distance to the closest circle). Must be positive, and at least 1 greater
     *   than 'cutOff' to avoid issues with underflow and the like.
-    * @param divisionFactor Strictly positive integer, division factor decrease in circle size for
+    * @param divisionFactor Strictly positive integer, >= 2, division factor decrease in circle size for
     *   each iteration.
     * @param cutOff Floating-point, used for color interpolation based on distance. Must be
     *   non-negative. Smoothing length from the circle edge and outwards.
@@ -68,6 +68,10 @@ class PointToColorCalculator {
         "'cutOff' and/or 'maximumDistance' did not have legal values. c: " +
         cutOff + ", m: " + maximumDistance + "."
       );
+    }
+
+    if (divisionFactor < 2) {
+      throw new Error("Division factor did not have leal value: " + divisionFactor);
     }
 
     this.startRadius = 50; // Side-note: Hard-coded.
@@ -243,7 +247,7 @@ const drawToImage = function(event) {
 
   // Let the number of progress report messages depend on the number of pixels
   // and iterations. Not a great way to do it, but should be OK.
-  const progressMessagePixelIndex = Math.round(1000000.0/numberOfIterations);
+  const progressMessagePixelIndex = Math.round(1000000.0/(numberOfIterations + 1));
 
   // Draw (and send progress messages).
 

@@ -44,7 +44,7 @@ var WebworkerImageDrawing;
                 var imageDataArray = new Uint8ClampedArray(width * height * partsPerPixel);
                 // Let the number of progress report messages depend on the number of pixels
                 // and iterations. Not a great way to do it, but should be OK.
-                var progressMessagePixelIndex = Math.round(1000000.0 / numberOfIterations);
+                var progressMessagePixelIndex = Math.round(1000000.0 / (numberOfIterations + 1));
                 // Draw (and send progress messages).
                 for (var y = 0; y < height; y++) {
                     for (var x = 0; x < width; x++) {

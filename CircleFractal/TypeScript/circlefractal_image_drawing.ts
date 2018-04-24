@@ -52,7 +52,7 @@ namespace CirclefractalImageDrawing {
       * 1 greater than 'cutOff' to avoid issues with underflow and the like.
       */
     readonly maximumDistance: number;
-    /** Strictly positive integer, division factor decrease in circle size for
+    /** Strictly positive integer, >= 2, division factor decrease in circle size for
       * each iteration.
       */
     readonly divisionFactor: number;
@@ -81,8 +81,8 @@ namespace CirclefractalImageDrawing {
           cutOff + ", m: " + maximumDistance + ".");
       }
 
-      if (!Number.isInteger(divisionFactor) || divisionFactor < 1) {
-        throw new Error("'divisionFactor' was not a positive integer: "+ divisionFactor + ".");
+      if (!Number.isInteger(divisionFactor) || divisionFactor < 2) {
+        throw new Error("'divisionFactor' was not an integer greater than 1: "+ divisionFactor + ".");
       }
 
       if (!Number.isInteger(numberOfIterations) || numberOfIterations < 0) {

@@ -66,11 +66,13 @@ function myMainFun() {
   const myDrawingContext = getOrThrow(myDrawingBoard.getContext("2d"));
 
   function bind(
-      input: HTMLInputElement, show: HTMLLabelElement,
+      input: HTMLInputElement, showNull: HTMLLabelElement | null,
       defaultValue: number, inputValidations: HTMLInputElement[]) {
     input.value = defaultValue.toString();
     const update = function() {
-      show.innerHTML = input.value.toString();
+      if (showNull) {
+        showNull.innerHTML = input.value.toString();
+      }
     };
     update();
     input.onchange = update;
@@ -81,16 +83,14 @@ function myMainFun() {
   const inputValidations: Array<HTMLInputElement> = [];
 
   const myInputIterations = getOrThrow(document.getElementById("input_iterations")) as HTMLInputElement;
-  const myShowIterations = getOrThrow(document.getElementById("show_iterations")) as HTMLLabelElement;
-  bind(myInputIterations, myShowIterations, 5, inputValidations);
+  bind(myInputIterations, null, 5, inputValidations);
 
   const myInputDivision = getOrThrow(document.getElementById("input_division")) as HTMLInputElement;
   const myShowDivision = getOrThrow(document.getElementById("show_division")) as HTMLLabelElement;
   bind(myInputDivision, myShowDivision, 2, inputValidations);
 
   const myInputCutoff = getOrThrow(document.getElementById("input_cutoff")) as HTMLInputElement;
-  const myShowCutoff = getOrThrow(document.getElementById("show_cutoff")) as HTMLLabelElement;
-  bind(myInputCutoff, myShowCutoff, 1.5, inputValidations);
+  bind(myInputCutoff, null, 1.5, inputValidations);
 
   const areFormsValid = function() {
     return inputValidations.every(function(input) {

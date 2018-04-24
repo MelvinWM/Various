@@ -32,8 +32,8 @@ var CirclefractalImageDrawing;
                 throw new Error("'cutOff' and/or 'maximumDistance' did not have legal values. c: " +
                     cutOff + ", m: " + maximumDistance + ".");
             }
-            if (!Number.isInteger(divisionFactor) || divisionFactor < 1) {
-                throw new Error("'divisionFactor' was not a positive integer: " + divisionFactor + ".");
+            if (!Number.isInteger(divisionFactor) || divisionFactor < 2) {
+                throw new Error("'divisionFactor' was not an integer greater than 1: " + divisionFactor + ".");
             }
             if (!Number.isInteger(numberOfIterations) || numberOfIterations < 0) {
                 throw new Error("'numberOfIterations' was not a non-negative integer.");

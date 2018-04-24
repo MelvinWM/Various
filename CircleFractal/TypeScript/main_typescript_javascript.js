@@ -54,10 +54,12 @@ function myMainFun() {
     var myReloadButton = getOrThrow(document.getElementById("reload_button"));
     var myDrawingBoard = getOrThrow(document.getElementById("drawing_board"));
     var myDrawingContext = getOrThrow(myDrawingBoard.getContext("2d"));
-    function bind(input, show, defaultValue, inputValidations) {
+    function bind(input, showNull, defaultValue, inputValidations) {
         input.value = defaultValue.toString();
         var update = function () {
-            show.innerHTML = input.value.toString();
+            if (showNull) {
+                showNull.innerHTML = input.value.toString();
+            }
         };
         update();
         input.onchange = update;
@@ -67,14 +69,12 @@ function myMainFun() {
     }
     var inputValidations = [];
     var myInputIterations = getOrThrow(document.getElementById("input_iterations"));
-    var myShowIterations = getOrThrow(document.getElementById("show_iterations"));
-    bind(myInputIterations, myShowIterations, 5, inputValidations);
+    bind(myInputIterations, null, 5, inputValidations);
     var myInputDivision = getOrThrow(document.getElementById("input_division"));
     var myShowDivision = getOrThrow(document.getElementById("show_division"));
     bind(myInputDivision, myShowDivision, 2, inputValidations);
     var myInputCutoff = getOrThrow(document.getElementById("input_cutoff"));
-    var myShowCutoff = getOrThrow(document.getElementById("show_cutoff"));
-    bind(myInputCutoff, myShowCutoff, 1.5, inputValidations);
+    bind(myInputCutoff, null, 1.5, inputValidations);
     var areFormsValid = function () {
         return inputValidations.every(function (input) {
             return input.checkValidity();

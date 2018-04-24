@@ -32,8 +32,8 @@ var CirclefractalImageDrawing;
                 throw new Error("'cutOff' and/or 'maximumDistance' did not have legal values. c: " +
                     cutOff + ", m: " + maximumDistance + ".");
             }
-            if (!Number.isInteger(divisionFactor) || divisionFactor < 1) {
-                throw new Error("'divisionFactor' was not a positive integer: " + divisionFactor + ".");
+            if (!Number.isInteger(divisionFactor) || divisionFactor < 2) {
+                throw new Error("'divisionFactor' was not an integer greater than 1: " + divisionFactor + ".");
             }
             if (!Number.isInteger(numberOfIterations) || numberOfIterations < 0) {
                 throw new Error("'numberOfIterations' was not a non-negative integer.");
@@ -245,7 +245,7 @@ var WebworkerImageDrawing;
                 var imageDataArray = new Uint8ClampedArray(width * height * partsPerPixel);
                 // Let the number of progress report messages depend on the number of pixels
                 // and iterations. Not a great way to do it, but should be OK.
-                var progressMessagePixelIndex = Math.round(1000000.0 / numberOfIterations);
+                var progressMessagePixelIndex = Math.round(1000000.0 / (numberOfIterations + 1));
                 // Draw (and send progress messages).
                 for (var y = 0; y < height; y++) {
                     for (var x = 0; x < width; x++) {

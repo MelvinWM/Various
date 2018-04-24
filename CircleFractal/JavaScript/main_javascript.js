@@ -10,10 +10,12 @@ const myMainFun = function() {
   const myErrorText = document.getElementById("error_text");
   const myDrawingContext = myDrawingBoard.getContext("2d");
 
-  const bind = function(input, show, defaultValue, inputValidations) {
+  const bind = function(input, showNull, defaultValue, inputValidations) {
     input.value = defaultValue;
     const update = function() {
-      show.innerHTML = input.value;
+      if (showNull) {
+        showNull.innerHTML = input.value;
+      }
     };
     update();
     input.onchange = update;
@@ -24,16 +26,14 @@ const myMainFun = function() {
   const inputValidations = [];
 
   const myInputIterations = document.getElementById("input_iterations");
-  const myShowIterations = document.getElementById("show_iterations");
-  bind(myInputIterations, myShowIterations, 5, inputValidations);
+  bind(myInputIterations, null, 5, inputValidations);
 
   const myInputDivision = document.getElementById("input_division");
   const myShowDivision = document.getElementById("show_division");
   bind(myInputDivision, myShowDivision, 2, inputValidations);
 
   const myInputCutoff = document.getElementById("input_cutoff");
-  const myShowCutoff = document.getElementById("show_cutoff");
-  bind(myInputCutoff, myShowCutoff, 1.5, inputValidations);
+  bind(myInputCutoff, null, 1.5, inputValidations);
 
   const areFormsValid = function() {
     return inputValidations.every(function(input) {
